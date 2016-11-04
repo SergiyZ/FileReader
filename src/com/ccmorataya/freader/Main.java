@@ -8,7 +8,6 @@ import java.io.InputStream;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
         File file = new File(System.getProperty("user.dir") + "/1.pdf");
         System.out.println(System.getProperty("user.dir") + "/1.pdf");
         InputStream fis = null;
@@ -18,13 +17,6 @@ public class Main {
 
             System.out.println("Total file size to read (in bytes) : "
                     + fis.available());
-
-            int content;
-            while ((content = fis.read()) != -1) {
-                // convert to char and display it
-                System.out.print((char) content);
-            }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
