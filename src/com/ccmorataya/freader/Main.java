@@ -1,31 +1,21 @@
 package com.ccmorataya.freader;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
 
     public static void main(String[] args) {
-        File file = new File(System.getProperty("user.dir") + "/1.pdf");
-        System.out.println(System.getProperty("user.dir") + "/1.pdf");
-        InputStream fis = null;
-
+        System.out.println(System.getProperty("user.dir") + "\\1.pdf");
+        Path path = Paths.get(System.getProperty("user.dir") + "/1.pdf");
         try {
-            fis = new FileInputStream(file);
+            byte[] bytes = Files.readAllBytes(path);
 
-            System.out.println("Total file size to read (in bytes) : "
-                    + fis.available());
+            System.out.println(bytes);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (fis != null)
-                    fis.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
     }
 }
